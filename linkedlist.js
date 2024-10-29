@@ -123,12 +123,23 @@ export default class Linkedlist {
 
   insertAt(value, index) {
     // inserts a new node with the provided value at the given index
-    let temp = this.nextNode;
+    let temp = this;
     for (let i = 0; i < this.size(); i += 1) {
-      if (i === index) {
+      if (i === index - 1 || index === 0) {
         const node = new Node(value);
         node.nextNode = temp.nextNode;
         temp.nextNode = node;
+        return;
+      }
+      temp = temp.nextNode;
+    }
+  }
+
+  removeAt(index) {
+    let temp = this;
+    for (let i = 0; i < this.size(); i += 1) {
+      if (i === index - 1 || index === 0) {
+        temp.nextNode = temp.nextNode.nextNode;
         return;
       }
       temp = temp.nextNode;
