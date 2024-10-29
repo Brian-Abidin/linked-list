@@ -1,17 +1,29 @@
 // LinkedList class that represents the full list
 
 export default class Linkedlist {
-  //   constructor(node = "head", pointer = null) {
-  //     // this.node = node;
-  //     // this.pointer = pointer;
-  //   }
-
-  append(value) {
-    // adds a new node containing value to the end of the list
+  constructor(value = "head", nextNode = null) {
+    this.value = value;
+    this.nextNode = nextNode;
   }
 
-  prepend(value) {
+  append(node) {
+    // adds a new node containing value to the end of the list
+    // return this.pointer = node;
+    // size += 1;
+    if (this.nextNode === null) {
+      this.nextNode = node;
+      return;
+    }
+    console.log(this.nextNode);
+  }
+
+  prepend(node) {
     // adds a new node containing value to the start of the list
+    // node.value = head
+    // node.pointer = this.node;
+    // size += 1;
+    node.nextNode = this.nextNode;
+    this.nextNode = node;
   }
 
   size() {
