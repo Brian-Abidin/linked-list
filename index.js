@@ -16,5 +16,6 @@ console.log(newList.tail());
 console.log(newList.contains(3));
 console.log(newList.find(3));
 console.log(newList.toString());
-console.log(newList.insertAt(2.5, 1));
+console.log(newList.insertAt(2.5, 0));
+console.log(newList.removeAt(0));
 console.log(newList.toString());
