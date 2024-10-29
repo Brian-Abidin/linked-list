@@ -45,31 +45,80 @@ export default class Linkedlist {
 
   head() {
     // returns first node
+    return this.nextNode;
   }
 
   tail() {
     // returns last node
+    let temp = this;
+    while (temp.nextNode !== null) {
+      temp = temp.nextNode;
+    }
+    return temp;
   }
 
   at(index) {
-    // returns node at given index
+    // returns the node at a given index
+    if (index < 0) {
+      throw new Error("index cannot be smaller than 0");
+    } else if (index > this.size() - 1) {
+      throw new Error("index cannot be larger than list size");
+    }
+    let count = 0;
+    let temp = this.nextNode;
+    while (count !== index) {
+      temp = temp.nextNode;
+      count += 1;
+    }
+    return temp;
   }
 
   pop() {
     // removes the last element from the list
+    let count = 0;
+    let temp = this;
+    while (count !== this.size() - 1) {
+      temp = temp.nextNode;
+      count += 1;
+    }
+    temp.nextNode = null;
   }
 
   contains(value) {
     // returns true if the passed in value is in the list, else returns false
+    let temp = this.nextNode;
+    for (let i = 0; i < this.size(); i += 1) {
+      console.log(temp);
+      if (temp.value === value) return true;
+      temp = temp.nextNode;
+    }
+    return false;
   }
 
   find(value) {
     // returns the index of the node containing value, or null if not found
+    let temp = this.nextNode;
+    for (let i = 0; i < this.size(); i += 1) {
+      if (temp.value === value) return i;
+      temp = temp.nextNode;
+    }
+    return null;
   }
 
   toString() {
     // represents linkedList objects as strings.
     // Prints out ex.) ( value ) -> ( value ) -> ( value ) -> null
+    let temp = this.nextNode;
+    let string = "";
+    for (let i = 0; i < this.size(); i += 1) {
+      if (temp.nextNode === null) {
+        string += `(${temp.value}) -> null`;
+      } else {
+        string += `(${temp.value}) -> `;
+      }
+      temp = temp.nextNode;
+    }
+    return string;
   }
   /*
   EXTRA CREDIT
