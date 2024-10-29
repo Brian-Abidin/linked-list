@@ -1,4 +1,5 @@
 // LinkedList class that represents the full list
+import Node from "./node.js";
 
 export default class Linkedlist {
   constructor(value = "head", nextNode = null) {
@@ -6,28 +7,40 @@ export default class Linkedlist {
     this.nextNode = nextNode;
   }
 
-  append(node) {
+  append(value) {
     // adds a new node containing value to the end of the list
-    // return this.pointer = node;
-    // size += 1;
+    const node = new Node(value);
     if (this.nextNode === null) {
       this.nextNode = node;
       return;
     }
-    console.log(this.nextNode);
+
+    let temp = this.nextNode;
+    while (temp.nextNode !== null) {
+      temp = temp.nextNode;
+    }
+    temp.nextNode = node;
   }
 
-  prepend(node) {
+  prepend(value) {
     // adds a new node containing value to the start of the list
     // node.value = head
     // node.pointer = this.node;
     // size += 1;
+    const node = new Node(value);
     node.nextNode = this.nextNode;
     this.nextNode = node;
   }
 
   size() {
     // returns total number of nodes in the list
+    let size = 0;
+    let temp = this;
+    while (temp.nextNode !== null) {
+      size += 1;
+      temp = temp.nextNode;
+    }
+    return size;
   }
 
   head() {
