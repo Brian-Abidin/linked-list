@@ -120,10 +120,25 @@ export default class Linkedlist {
     }
     return string;
   }
+
+  insertAt(value, index) {
+    // inserts a new node with the provided value at the given index
+    let temp = this.nextNode;
+    for (let i = 0; i < this.size(); i += 1) {
+      if (i === index) {
+        const node = new Node(value);
+        node.nextNode = temp.nextNode;
+        temp.nextNode = node;
+        return;
+      }
+      temp = temp.nextNode;
+    }
+  }
   /*
   EXTRA CREDIT
   insertAt(value, index){
     // inserts a new node with the provided value at the given index
+  
   }
 
   removeAt(index){
