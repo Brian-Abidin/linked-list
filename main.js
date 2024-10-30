@@ -1,5 +1,4 @@
 import Linkedlist from "./linkedlist.js";
-import Node from "./node.js";
 
 const newList = new Linkedlist();
 newList.append(3);
