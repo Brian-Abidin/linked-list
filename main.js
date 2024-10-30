@@ -1,20 +1,25 @@
 import Linkedlist from "./linkedlist.js";
 
-const newList = new Linkedlist();
-newList.append(3);
-newList.prepend(2);
-newList.prepend(1);
-newList.append(4);
+const list = new Linkedlist();
 
-console.log(newList.size());
-console.log(newList.head());
-console.log(newList.tail());
-console.log(newList.at(3));
-console.log(newList.pop());
-console.log(newList.tail());
-console.log(newList.contains(3));
-console.log(newList.find(3));
-console.log(newList.toString());
-console.log(newList.insertAt(2.5, 0));
-console.log(newList.removeAt(0));
-console.log(newList.toString());
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+
+console.log(list.toString());
+list.prepend("wolf");
+console.log(list.toString());
+console.log(list.size());
+console.log(list.head());
+console.log(list.tail());
+console.log(list.at(4));
+list.pop();
+console.log(list.toString());
+console.log(list.contains("cat"));
+console.log(list.find("cat"));
+list.insertAt("elephant", 0);
+list.removeAt(1);
+console.log(list.toString());
