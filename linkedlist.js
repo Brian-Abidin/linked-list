@@ -1,6 +1,6 @@
-// LinkedList class that represents the full list
 import Node from "./node.js";
 
+// LinkedList class that represents the full list
 export default class Linkedlist {
   constructor(value = "head", nextNode = null) {
     this.value = value;
@@ -24,9 +24,6 @@ export default class Linkedlist {
 
   prepend(value) {
     // adds a new node containing value to the start of the list
-    // node.value = head
-    // node.pointer = this.node;
-    // size += 1;
     const node = new Node(value);
     node.nextNode = this.nextNode;
     this.nextNode = node;
@@ -64,22 +61,18 @@ export default class Linkedlist {
     } else if (index > this.size() - 1) {
       throw new Error("index cannot be larger than list size");
     }
-    let count = 0;
     let temp = this.nextNode;
-    while (count !== index) {
+    for (let i = 0; i < index; i += 1) {
       temp = temp.nextNode;
-      count += 1;
     }
     return temp;
   }
 
   pop() {
     // removes the last element from the list
-    let count = 0;
     let temp = this;
-    while (count !== this.size() - 1) {
+    for (let i = 0; i < this.size() - 1; i += 1) {
       temp = temp.nextNode;
-      count += 1;
     }
     temp.nextNode = null;
   }
@@ -112,9 +105,9 @@ export default class Linkedlist {
     let string = "";
     for (let i = 0; i < this.size(); i += 1) {
       if (temp.nextNode === null) {
-        string += `(${temp.value}) -> null`;
+        string += `( ${temp.value} ) -> null`;
       } else {
-        string += `(${temp.value}) -> `;
+        string += `( ${temp.value} ) -> `;
       }
       temp = temp.nextNode;
     }
@@ -125,7 +118,7 @@ export default class Linkedlist {
     // inserts a new node with the provided value at the given index
     let temp = this;
     for (let i = 0; i < this.size(); i += 1) {
-      if (i === index - 1 || index === 0) {
+      if (i === index || index === 0) {
         const node = new Node(value);
         node.nextNode = temp.nextNode;
         temp.nextNode = node;
@@ -136,25 +129,14 @@ export default class Linkedlist {
   }
 
   removeAt(index) {
+    // remove node at given index
     let temp = this;
     for (let i = 0; i < this.size(); i += 1) {
-      if (i === index - 1 || index === 0) {
+      if (i === index || index === 0) {
         temp.nextNode = temp.nextNode.nextNode;
         return;
       }
       temp = temp.nextNode;
     }
   }
-  /*
-  EXTRA CREDIT
-  insertAt(value, index){
-    // inserts a new node with the provided value at the given index
-  
-  }
-
-  removeAt(index){
-    // removes node at given index
-  }
-
-  */
 }
