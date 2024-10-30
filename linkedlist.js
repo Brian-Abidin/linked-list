@@ -81,7 +81,6 @@ export default class Linkedlist {
     // returns true if the passed in value is in the list, else returns false
     let temp = this.nextNode;
     for (let i = 0; i < this.size(); i += 1) {
-      console.log(temp);
       if (temp.value === value) return true;
       temp = temp.nextNode;
     }
